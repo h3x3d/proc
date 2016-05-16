@@ -1,11 +1,10 @@
 import { readdir, readFile as fsReadFile, stat } from 'mz/fs';
 import { join } from 'path';
 
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.substr(1);
-}
-
-const CPU_FIELDS = ['user', 'nice', 'system', 'idle', 'iowait', 'irq', 'softirq', 'steal', 'guest', 'guest_nice'];
+const CPU_FIELDS = [
+  'user', 'nice', 'system', 'idle', 'iowait',
+  'irq', 'softirq', 'steal', 'guest', 'guest_nice'
+];
 
 const PID_STAT = [
   'pid', 'comm', 'state', 'ppid', 'pgrp', 'session', 'tty_nr', 'tpgid', 'flags',
@@ -30,8 +29,8 @@ const PID_STATM = [
 const NET_FIELDS = ['bytes', 'packets', 'errs', 'drop', 'fifo', 'frame', 'compressed', 'multicast'];
 
 const IFACE_FIELDS = [
-  ...NET_FIELDS.map(v => `rx_${capitalize(v)}`),
-  ...NET_FIELDS.slice(0, -1).map(v => `tx_${capitalize(v)}`)
+  ...NET_FIELDS.map(v => `rx_${v}`),
+  ...NET_FIELDS.slice(0, -1).map(v => `tx_${v}`)
 ];
 
 const DISK_FIELDS = [
