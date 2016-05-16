@@ -27,11 +27,11 @@ const PID_STATM = [
   'dt'
 ];
 
-const NET_FIELDS = ['Bytes', 'Packets', 'Errs', 'Drop', 'Fifo', 'Frame', 'Compressed', 'Multicast'];
+const NET_FIELDS = ['bytes', 'packets', 'errs', 'drop', 'fifo', 'frame', 'compressed', 'multicast'];
 
 const IFACE_FIELDS = [
-  ...NET_FIELDS.map(v => `rx${capitalize(v)}`),
-  ...NET_FIELDS.slice(0, -1).map(v => `tx${capitalize(v)}`)
+  ...NET_FIELDS.map(v => `rx_${capitalize(v)}`),
+  ...NET_FIELDS.slice(0, -1).map(v => `tx_${capitalize(v)}`)
 ];
 
 const DISK_FIELDS = [
