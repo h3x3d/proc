@@ -1,0 +1,29 @@
+{
+  "name": "proc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "compile": "babel src -d lib"
+  },
+  "author": "h3x3d",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": "h3x3d"
+  },
+  "babel": {
+    "presets": [
+      "babel-preset-h3x3d"
+    ]
+  },
+  "dependencies": {
+    "babel-runtime": "^6.6.1",
+    "mz": "^2.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.8.0",
+    "babel-preset-h3x3d": "github:h3x3d/babel-preset-h3x3d",
+    "eslint": "^2.9.0",
+    "eslint-config-h3x3d": "github:h3x3d/eslint-config-h3x3d"
+  }
+}
