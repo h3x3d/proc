@@ -6,6 +6,7 @@
   "scripts": {
     "compile": "babel src -d lib"
   },
+  "repository": "github:h3x3d/proc",
   "author": "h3x3d",
   "license": "ISC",
   "eslintConfig": {
