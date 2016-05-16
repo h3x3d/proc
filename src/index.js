@@ -34,6 +34,13 @@ const IFACE_FIELDS = [
   ...NET_FIELDS.slice(0, -1).map(v => `tx${capitalize(v)}`)
 ];
 
+const DISK_FIELDS = [
+  'device_number', 'device_number_minor', 'device',
+  'reads_completed', 'reads_merged', 'sectors_read', 'ms_reading',
+  'writes_completed', 'writes_merged', 'sectors_written', 'ms_writing',
+  'ios_pending', 'ms_io', 'ms_weighted_io'
+];
+
 function readFile(file) {
   return fsReadFile(file, { encoding: 'utf-8' });
 }
@@ -119,6 +126,23 @@ export default function Proc(basePath) {
     };
   }
 
+  async function disk() {
+    const data = (await readFile(join(basePath, 'diskstats'))).split(`\n`);
+    const ret = {};
+
+    for (const line of data.filter(v => v.length > 0)) {
+      const lineData = zip(
+        DISK_FIELDS,
+        line.split(/\s+/).filter(v => v.length > 0),
+        (v, k) => (k === 'device' ? v : parseInt(v, 10))
+      );
+
+      ret[lineData.device] = lineData;
+    }
+
+    return ret;
+  }
+
   async function ps() {
     const pids = [];
 
@@ -157,6 +181,7 @@ export default function Proc(basePath) {
     ps,
     procfs,
     load,
-    net
+    net,
+    disk
   };
 }
