@@ -85,7 +85,9 @@ export default function Proc(basePath) {
 
     for (const line of data) {
       const [, k, v] = line.match(/(\w+):\s+(\d+).*/) || [];
-      ret[k] = v;
+      if (k && v) {
+        ret[k] = parseInt(v, 10);
+      }
     }
 
     return ret;

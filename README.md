@@ -18,8 +18,7 @@ async function work() {
   console.log(await init.stat());
   console.log(await init.statm());
 
-  console.log(await proc.net())
-  ;
+  console.log(await proc.net());
 }
 
 work().catch(console.error);
