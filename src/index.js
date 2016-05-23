@@ -167,7 +167,7 @@ export default function Proc(basePath) {
     const ret = {};
 
     for (const line of data.filter(v => v.length > 0)) {
-      const [iface, ...lineVals] = line.split(/\s+/).filter(v => v.length > 0);
+      const [iface, ...lineVals] = line.split(/:?\s+/).filter(v => v.length > 0);
       ret[iface] = zip(IFACE_FIELDS, lineVals, v => parseInt(v, 10));
     }
 
